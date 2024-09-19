@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import caseRoutes from './routes/caseRoutes';
 import './cron/cronJob';
+import { iniciarcron } from './cron/cronJob';
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,8 @@ mongoose.connect(process.env.MONGO_URL_DOCKER!)
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
+      iniciarcron()
+
     });
   })
   .catch(err => {

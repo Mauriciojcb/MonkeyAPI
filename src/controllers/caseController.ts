@@ -22,13 +22,13 @@ export const createCase = async (req: Request, res: Response) => {
       <img src="${mapImageUrl}" alt="Mapa del caso" />
     `;
 
-    // Enviar el correo electrónico
-    await sendEmail(
-      envs.SMTP_USER, // Correo de destino
-      'Nuevo caso de Viruela del Mono registrado',
-      'Se ha registrado un nuevo caso de Viruela del Mono',
-      emailHtml
-    );
+     //Enviar el correo electrónico
+     await sendEmail(
+       envs.SMTP_USER, // Correo de destino
+       'Nuevo caso de Viruela del Mono registrado',
+       'Se ha registrado un nuevo caso de Viruela del Mono',
+       emailHtml
+     );
 
     // Respuesta exitosa con el nuevo caso creado
     res.status(201).json(newCase);
