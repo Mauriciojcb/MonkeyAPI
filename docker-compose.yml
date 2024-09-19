@@ -2,6 +2,14 @@ version: '3.8'
 
 services:
   api:
+    image: javieerr/monkeyapi:latest
+    container_name: monkeyapi
+    environment:
+      - PORT=${PORT}
+      - MONGO_URI=${MONGO_URL_DOCKER}
+      - SMTP_PASS=${SMTP_PASS}
+      - SMTP_USER=${SMTP_USER}
+      - MAPBOX_ACCESS_TOKEN=${MAPBOX_ACCESS_TOKEN}
     build: .
     ports: 
       - "3000:3000"
