@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports: 
+      - "3000:3000"
+    env_file:
+      - .env  # Asegúrate de que el archivo .env esté presente en la raíz del proyecto
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
